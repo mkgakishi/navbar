@@ -4,15 +4,25 @@ import { BiMenuAltRight } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
 
 import classes from "./Header.module.scss";
+
 import { Link, useHistory } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ pick, setPick, destroy, ...rest }) => {
+
+
     const history = useHistory();
     const [menuOpen, setMenuOpen] = useState(false);
     const [size, setSize] = useState({
         width: undefined,
         height: undefined,
     });
+
+    const shortAddress = (addr) => {
+        const start = addr.substr(0, 6);
+        const end = addr.substr(addr.length - 4, 4);
+
+        return `${start}...${end}`;
+    }
 
     useEffect(() => {
         const handleResize = () => {
@@ -38,38 +48,51 @@ const Header = () => {
 
     const ctaClickHandler = () => {
         menuToggleHandler();
-        history.push("/page-cta");
+
+        if (!pick)
+            history.push("/login");
+        else
+            history.push("/wallet")
     };
+
+    const logout = () => {
+        setPick(null)
+        destroy()
+        window.localStorage.clear()
+        history.push("/login")
+    }
 
     return (
         <header className={classes.header}>
             <div className={classes.header__content}>
                 <Link to="/" className={classes.header__content__logo}>
-                    navbar
+                    SAFE FORSAGE
                 </Link>
-                <nav
-                    className={`${classes.header__content__nav} ${
-                        menuOpen && size.width < 768 ? classes.isMenu : ""
-                    }`}
-                >
+                <nav className={`${classes.header__content__nav} ${menuOpen && size.width < 768 ? classes.isMenu : ""
+                    }`}>
                     <ul>
                         <li>
-                            <Link to="/page-one" onClick={menuToggleHandler}>
-                                PageOne
+                            <Link to="/" onClick={menuToggleHandler}>
+                                {pick ? 'Office' : 'Home'}
                             </Link>
                         </li>
                         <li>
-                            <Link to="/page-two" onClick={menuToggleHandler}>
-                                PageTwo
+                            <Link to="/reward" onClick={menuToggleHandler}>
+                                Reward
                             </Link>
                         </li>
                         <li>
-                            <Link to="/page-three" onClick={menuToggleHandler}>
-                                PageThree
+                            <Link to="/governance" onClick={menuToggleHandler}>
+                                Governance
                             </Link>
                         </li>
+                        { pick ?
+                            <li onClick={logout} className={classes.header__content__nav__logout}>
+                                Logout
+                            </li> : ""
+                        }
                     </ul>
-                    <button onClick={ctaClickHandler}>CTA Page</button>
+                    <button onClick={ctaClickHandler}>{pick ? shortAddress(pick) : "Connect"}</button>
                 </nav>
                 <div className={classes.header__content__toggle}>
                     {!menuOpen ? (

@@ -2,10 +2,8 @@
 
 .container {
     height: calc(100vh - #{$headerHeight});
-    background: $bg;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include breakpoint(md) {
+    }
 
     h1 {
         padding: 1.5rem 2.5rem;

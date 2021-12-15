@@ -5,10 +5,23 @@
     margin: 0;
 }
 
-body {
+body, html {
     width: 100%;
     font-family: $Poppins;
     color: $dark;
+    padding-bottom: 2rem;
+    min-height:100%;
+    background:linear-gradient(180deg, rgba($black, 0.7) 0%, $light 100%), url(./bg2.jpg);
+    background-size: 100% 60%;
+    background-repeat: no-repeat;
+    background-blend-mode: normal;
+
+    @include breakpoint(md) {
+        top: 20px;       
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-blend-mode:normal;
+    }
 }
 
 #root {

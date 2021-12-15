@@ -1,0 +1,193 @@
+@import "../styles/variables.scss";
+
+.office {
+    &__stats {
+        display: flex;
+        flex-direction: row;
+        padding:0.5rem;
+        @include breakpoint(md) {       
+            display: none;
+        }
+        transition: 0.2ms all;
+
+        h5 {
+            color: rgba($dark, 0.8);
+        }
+
+        button{
+            margin-left: auto;
+            background-color: $primary;
+            border: none;
+            border-radius: 3px;
+
+            &:hover {
+                cursor: pointer;
+                background-color: rgba($primary, 0.5);
+            }
+        }
+    }
+
+    &__cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        @include breakpoint(md) {       
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        }
+        &__info {
+            display: flex;
+            flex-direction: column;
+            margin:0.5rem;
+            border: 1px solid rgba($dark, 0.2);
+            background-color: rgba(201, 252, 237, 0.5);
+            background-blend-mode: lighten;
+            color: $dark;
+            justify-content: center;
+            padding: 0.8rem;
+            font-family: inherit;
+
+
+            &__label {
+                font-size: 13px;
+                font-weight: 400;
+                @include breakpoint(md) { 
+                    font-size: 15px;      
+                }
+            }
+
+            &__count{
+                font-weight: 400;
+            }
+        }
+    }
+    
+    &__matrix{
+        display: grid;
+        margin-bottom:  5rem;
+        grid-template-columns: 1fr;
+        @include breakpoint(md) {  
+            grid-template-columns: 3fr 9fr;
+        }
+
+        &_cards {
+            padding: 0.5rem;
+            display: none;
+            @include breakpoint(md) {  
+                display: block;
+            }
+
+            &__side {
+                margin-bottom: 0.5rem;
+                background-color: rgba($light, 0.5);
+                border: none;
+                border-left:0.2rem solid rgba($dark, 0.3);
+
+                &__body{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+
+                    &__last{
+                       margin-left: auto;
+                       color: rgba($dark, 0.6);
+                       font-size: 13px;
+
+
+                       &__hover{
+                           cursor: pointer;
+                           
+                           &:hover{
+                              color: blue;
+                           }
+                       }
+                    }
+                }
+            }
+        }
+
+    
+        &__wrapper {
+            &__container {
+                display: grid;
+                padding: 1rem;
+                margin: 0.5rem;
+                background-color: rgba($light, 0);
+
+                &__title{
+                    color: rgba($dark, 0.8);
+                    font-size: 10px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                &__slots{
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    border-radius: 2rem;
+
+                    @include breakpoint(md) {       
+                        grid-template-columns: 1fr 1fr 1fr 1fr;
+                    }
+
+                    &__slot {
+                        display: flex;
+                        border: 1px solid rgba($dark, 0.1);
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: rgba($light, 0.5);
+                        padding-top: 1rem;
+                        padding-bottom: 1rem;
+                        min-height: 168px;
+                        margin: 0.2rem;
+                        @include breakpoint(md) {       
+                            margin: 0.5rem;
+                        }
+
+                        span{
+                            font-size: 12px;
+                        }
+
+                        &__fees {
+                            display: flex; 
+                            margin-top: 0.2rem;
+
+                            span {
+                                font-size: 10px;
+
+                                & svg {
+                                    margin-right: 0.5rem;
+                                }
+                            }
+                        }
+                        &__price{
+                            background-color: rgba($primary, 0.1);
+                            padding:0rem 1rem;
+                        }
+                    }
+                }
+                &__info {
+                    display: grid;
+                    grid-template-columns: 4fr 4fr 4fr;
+
+                    @include breakpoint(md) {  
+                        grid-template-columns: 2fr 2fr 8fr;
+                    }
+
+                    svg {
+                        margin-right: 1rem;
+                    }
+
+                    span {
+                        color: gray;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.last {
+    margin-left: auto;
+}

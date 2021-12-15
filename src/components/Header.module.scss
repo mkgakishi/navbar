@@ -1,7 +1,6 @@
 @import "./../styles/variables.scss";
 
 .header {
-    background: $dark;
     width: 100%;
     height: $headerHeight;
     padding: 0 1.5rem;
@@ -12,7 +11,6 @@
 
     &__content {
         overflow: hidden;
-        color: $light;
         margin: 0 auto;
         max-width: 1920px;
         height: 100%;
@@ -23,10 +21,16 @@
         z-index: 100;
 
         &__logo {
-            font-size: 2rem;
+            font-size: 1.7rem;
             font-weight: bold;
             text-decoration: none;
-            color: $light;
+            color: rgba($dark, 0.8);
+            text-shadow: $dark;
+
+            &:hover {
+                color: $dark;
+                text-shadow: $light;
+            }
         }
 
         &__nav {
@@ -45,6 +49,7 @@
             backdrop-filter: blur(2px);
             transform: translate(0);
             transition: 0.3s ease transform;
+            color: $light;
 
             @include breakpoint(md) {
                 transform: none;
@@ -53,6 +58,8 @@
                 width: auto;
                 height: 100%;
                 position: static;
+                color: $dark;
+
             }
             ul {
                 list-style: none;
@@ -118,6 +125,13 @@
             &.isMenu {
                 transform: translate(100%);
             }
+
+            &__logout {
+                &:hover {
+                    cursor: pointer;
+                    color: rgb(245, 69, 69);
+                }
+            }
         }
 
         &__toggle {
@@ -127,9 +141,10 @@
             font-size: 2rem;
             transition: 0.3s ease all;
             position: relative;
+            color: $dark;
 
             &:hover {
-                color: $primary;
+                color: $light;
             }
 
             @include breakpoint(md) {

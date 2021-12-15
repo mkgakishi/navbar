@@ -1,14 +1,16 @@
 import React from "react";
+import { Container } from "react-bootstrap";
 import Header from "./Header";
 
 import classes from "./Layout.module.scss";
 
-const Layout = ({ children }) => {
+
+const Layout = ({ children, ...rest }) => {
     return (
-        <>
-            <Header />
+        <Container>
+            <Header {...rest} />
             <div className={classes.container}>{children}</div>
-        </>
+        </Container>
     );
 };
 

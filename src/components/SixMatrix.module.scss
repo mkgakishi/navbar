@@ -1,0 +1,54 @@
+@import "./../styles/variables.scss";
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+
+    &__sponsor {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__title {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        font-weight: 400;
+        color: $dark;
+    }
+
+    &__first {
+        display: flex;
+        grid-template-columns: 6fr 6fr;       
+    }
+
+
+    &__count{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around; 
+    }
+}
+
+.slotmain{
+    &:hover {
+        cursor: pointer;
+        fill: rgba(195, 229, 240, 0.8);
+        stroke: rgba(151, 153, 153, 0.9)
+    }
+}
+
+.slotcircle{
+    fill: rgba(103, 208, 240, 0.6);
+    stroke: rgba(103, 208, 240, 0.8);
+   
+    &:hover {
+        cursor: pointer;
+        fill: rgba(195, 229, 240, 0.8);
+        stroke: rgba(151, 153, 153, 0.9)
+    }
+}
